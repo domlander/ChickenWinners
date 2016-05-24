@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ChickenWinners.Models.Fixture>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        @ViewBag.week
+    </thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTeamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AwayTeamId)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTeamId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AwayTeamId)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,22 @@
+﻿<h2>Current Games</h2>
+
+@using (Ajax.BeginForm("_myGames", "MyLeagues", new AjaxOptions
+                                           {
+                                               InsertionMode = InsertionMode.Replace,
+                                               UpdateTargetId = "response"
+                                           }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <p>League State</p>
+        <div>
+            @Html.DropDownList("state", 
+                               EnumHelper.GetSelectList(typeof(ChickenWinners.Models.LeagueState)), 
+                               new { @class = "form-control" })
+        </div>
+    </div>
+    <input type="submit" value="Enter" class="btn btn-success" />
+}
+
+@Html.Action("_myGames")

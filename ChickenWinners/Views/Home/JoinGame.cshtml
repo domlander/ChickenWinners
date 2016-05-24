@@ -1,0 +1,19 @@
+﻿@model ChickenWinners.ViewModels.JoinGameViewModel
+
+<h1>Join Game</h1>
+
+@using (Ajax.BeginForm("_joinGame", "Home", new AjaxOptions { UpdateTargetId = "response" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Id)
+        <div>
+            @Html.EditorFor(m => m.Id, new { id = "Id", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Id)
+        </div>
+    </div>
+    <p id="invalidCode"></p>
+    <input type="submit" value="Enter" class="btn btn-success" />
+    <div id="response"></div>
+}

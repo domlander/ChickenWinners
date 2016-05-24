@@ -39,7 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -93,19 +101,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease">
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -161,46 +162,91 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyLeaguesController.cs" />
+    <Compile Include="Controllers\SportsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510171122311_InitialCreate.cs" />
-    <Compile Include="Migrations\201510171122311_InitialCreate.Designer.cs">
-      <DependentUpon>201510171122311_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201605210754282_MyLeaguesSeparateClass.cs" />
+    <Compile Include="Migrations\201605210754282_MyLeaguesSeparateClass.Designer.cs">
+      <DependentUpon>201605210754282_MyLeaguesSeparateClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605210949559_undoLastMigration.cs" />
+    <Compile Include="Migrations\201605210949559_undoLastMigration.Designer.cs">
+      <DependentUpon>201605210949559_undoLastMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\LeagueState.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\CreateGameViewModel.cs" />
     <Compile Include="Models\Fixture.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ResultsDbContext.cs" />
+    <Compile Include="ViewModels\JoinGameViewModel.cs" />
+    <Compile Include="Models\League.cs" />
+    <Compile Include="Models\LeaguePlayer.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Sport.cs" />
+    <Compile Include="Models\SportLeague.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\MyLeaguesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ChickenWinnersDb.mdf" />
-    <Content Include="App_Data\ChickenWinnersDb_log.ldf">
-      <DependentUpon>ChickenWinnersDb.mdf</DependentUpon>
-    </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Badges\Arsenal.png" />
+    <Content Include="Content\Images\Badges\AstonVilla.png" />
+    <Content Include="Content\Images\Badges\Bournemouth.png" />
+    <Content Include="Content\Images\Badges\Chelsea.png" />
+    <Content Include="Content\Images\Badges\CrystalPalace.png" />
+    <Content Include="Content\Images\Badges\Everton.png" />
+    <Content Include="Content\Images\Badges\Leicester.png" />
+    <Content Include="Content\Images\Badges\Liverpool.png" />
+    <Content Include="Content\Images\Badges\ManchesterCity.png" />
+    <Content Include="Content\Images\Badges\ManchesterUnited.png" />
+    <Content Include="Content\Images\Badges\Newcastle.png" />
+    <Content Include="Content\Images\Badges\Norwich.png" />
+    <Content Include="Content\Images\Badges\Southampton.png" />
+    <Content Include="Content\Images\Badges\Spurs.png" />
+    <Content Include="Content\Images\Badges\Stoke.png" />
+    <Content Include="Content\Images\Badges\Sunderland.png" />
+    <Content Include="Content\Images\Badges\Swansea.png" />
+    <Content Include="Content\Images\Badges\Watford.png" />
+    <Content Include="Content\Images\Badges\WestBrom.png" />
+    <Content Include="Content\Images\Badges\WestHam.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-2.2.3.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -217,7 +263,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -238,25 +283,46 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\JoinCreate.cshtml" />
-    <Content Include="Views\Home\MyGames.cshtml" />
-    <Content Include="Views\Home\Results.cshtml" />
     <Content Include="Views\Home\EditResults.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\_weeklyFixtures.cshtml" />
+    <Content Include="Views\Shared\_results.cshtml" />
+    <Content Include="Views\Home\MyLeaguesOld.cshtml" />
+    <Content Include="Views\Home\JoinGame.cshtml" />
+    <Content Include="Views\Home\CreateGame.cshtml" />
+    <Content Include="Views\Home\Sport.cshtml" />
+    <Content Include="Views\Sports\Create.cshtml" />
+    <Content Include="Views\Sports\Delete.cshtml" />
+    <Content Include="Views\Sports\Index.cshtml" />
+    <Content Include="Views\Sports\Details.cshtml" />
+    <Content Include="Views\Test\CreateTest.cshtml" />
+    <Content Include="Views\Test\DeleteTest.cshtml" />
+    <Content Include="Views\Test\DetailsTest.cshtml" />
+    <Content Include="Views\Test\EditTest.cshtml" />
+    <Content Include="Views\Test\IndexTest.cshtml" />
+    <Content Include="Views\Home\_joinGameResponse.cshtml" />
+    <Content Include="Views\MyLeagues\_myGames.cshtml" />
+    <Content Include="Views\MyLeagues\Create.cshtml" />
+    <Content Include="Views\MyLeagues\Delete.cshtml" />
+    <Content Include="Views\MyLeagues\Details.cshtml" />
+    <Content Include="Views\MyLeagues\Edit.cshtml" />
+    <Content Include="Views\MyLeagues\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510171122311_InitialCreate.resx">
-      <DependentUpon>201510171122311_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605210754282_MyLeaguesSeparateClass.resx">
+      <DependentUpon>201605210754282_MyLeaguesSeparateClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605210949559_undoLastMigration.resx">
+      <DependentUpon>201605210949559_undoLastMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

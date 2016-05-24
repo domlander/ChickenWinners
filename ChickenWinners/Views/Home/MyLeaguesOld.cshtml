@@ -1,0 +1,18 @@
+﻿@model ChickenWinners.ViewModels.MyLeaguesViewModel
+
+<h2>Current Games</h2>
+
+@using (Ajax.BeginForm("_myGames", "Home", new AjaxOptions { UpdateTargetId = "response" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LeagueState)
+        <div>
+            @Html.EnumDropDownListFor(m => m.LeagueState, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LeagueState)
+        </div>
+    </div>
+    <input type="submit" value="Enter" class="btn btn-success" />
+    <div id="response">@*@Html.Action("_myGames", "Home", new { myLeag })*@</div>
+}

@@ -11,22 +11,29 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Chicken Winners", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Results", "Results", "Home")</li>
-                    <li>@Html.ActionLink("My Games", "MyGames", "Home")</li>
-                    <li>@Html.ActionLink("Join / Create Game", "JoinCreate", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="row">
+                @Html.ActionLink("K/O Sports", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Create", "CreateGame", "Home")</li>
+                        <li>@Html.ActionLink("Join", "JoinGame", "Home")</li>
+                        <li>@Html.ActionLink("My Leagues", "Index", "MyLeagues")</li>
+                        <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
+                        @if(Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Sports", "Index", "Sports")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
     </div>
@@ -40,6 +47,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
